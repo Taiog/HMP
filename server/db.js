@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const uri =
-  "mongodb+srv://taiog:789123@cluster0.o0zbrth.mongodb.net/HMP?retryWrites=true&w=majority";
+require("dotenv").config();
+
+const uri = process.env.KEY_MONGODB;
 
 async function main() {
   await mongoose.connect(uri);

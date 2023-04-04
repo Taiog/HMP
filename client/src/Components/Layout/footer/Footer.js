@@ -17,15 +17,17 @@ function Footer() {
       User_name: `${playerInfo.given_name} ${playerInfo.family_name}`,
       User_email: playerInfo.email,
       User_score: 0,
+      User_picture: playerInfo.picture,
     });
     const userToken = response.data.token;
     localStorage.setItem("@HMP-app/userToken", userToken);
+    window.location.reload();
   };
-  if (logged) {
+  if (logged && user) {
     return (
       <div className={styles.footerLogged}>
         <div className={styles.image}>
-          <img src={player.picture}></img>
+          <img src={user.User_picture}></img>
         </div>
         <div>
           <div>{`${user.User_name}`}</div>

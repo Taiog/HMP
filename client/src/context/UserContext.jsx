@@ -24,21 +24,23 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const accessToken = localStorage.getItem("@HMP-app/userToken");
+  console.log(accessToken)
+
   useEffect(() => {
     const handleStorageChange = (e) => {
       if (e.key === "@HMP-app/userToken") {
         fetchUser(e.newValue);
       }
     };
-
-    const accessToken = localStorage.getItem("@HMP-app/userToken");
+    
     fetchUser(accessToken);
 
     window.addEventListener("storage", handleStorageChange);
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
-  }, []);
+  }, [accessToken]);
 
   return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 };

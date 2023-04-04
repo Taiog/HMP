@@ -10,6 +10,7 @@ let usersSchema = new mongoose.Schema({
     default: Date.now() - 3 * 60 * 60 * 1000,
     require: true,
   },
+  User_picture: { type: "String", require: true },
 });
 
 //eventsSchema.path("venue").validate(function (value) {

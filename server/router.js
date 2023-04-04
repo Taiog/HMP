@@ -49,7 +49,6 @@ router.post("/HMP/user", async (req, res) => {
       return res.json({ token });
     } else {
       const newUser = await User.create(req.body);
-      res.send("Usuário inserido com sucesso!");
       const token = generateAuthToken(newUser);
       return res.json({ token });
     }
