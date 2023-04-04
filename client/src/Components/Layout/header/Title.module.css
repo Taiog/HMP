@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "Chewy";
+    src: url("../fonts/Chewy/Chewy-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+.title {
+    font-family: 'Chewy', "cursive";
+    font-size: 1.5em;
+    color: #fdd67a; 
+}
+
+.title p{
+    margin: 0.5em 0em;
+}
+
+
+@media (min-width: 400px){
+    .title {
+      font-size: 2em;
+    }
+}
+@media (min-width: 1200px){
+    .title {
+      position: absolute;
+      right: 50vw;
+      margin-right: -152px;
+      font-size: 2.5em;
+    }   
+}

@@ -1,0 +1,64 @@
+.infobox {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #010033;
+    margin: 10px;
+    padding: 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.info {
+    padding: 9px 11px 9px 11px;
+    color: #fdd67a;
+    width: 52vw;
+    display: flex;
+    align-items: center;
+}
+
+.flagCountry{
+    padding-right: 0.5em;
+}
+
+.city{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 0.3em;
+    border-left: solid 1px#303030;
+}
+
+.city p{
+    margin: 0;
+    width: 100%;
+    font-size: small;
+    color: #bebebe;
+}
+
+@media (min-width: 400px){
+    .infobox {
+      padding: 0.5em;
+      width: 201px;
+      height: 84px;
+    }
+    
+    .info{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    }
+}
+
+@media (min-width: 500px){
+    .infobox {
+      padding: 0.5em;
+      width: 264px;
+      height: 84px;
+    }
+  }

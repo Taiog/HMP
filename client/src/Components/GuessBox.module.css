@@ -1,0 +1,66 @@
+.guessBox{
+    background-color: #efefef;
+    margin-bottom: 12px;
+    position: absolute;
+    bottom: 0px;
+    left: 50% ;
+    margin-left: -95px;
+    max-width: 190px;
+    border-radius: 1.5em;
+    border: solid 1px black;
+}
+
+.guessForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guessForm input {
+    max-width: 110px;
+    height: 2em;
+    border: none;
+    border-radius: 1.5em;
+    margin: 0.2em;
+    margin-left: 1em;
+    font-size: large;
+    background-color: #efefef;
+}
+
+.guessForm input:focus-visible{
+    outline: transparent;
+}
+
+.guessForm button {
+    height: 35px;
+    width: 45px;
+    margin-right: 0.4em;
+    border: 1px solid  black;
+    border-radius: 3em;
+    color: black;
+    background-color: #ffbf29;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.guessForm button:hover {
+    background-color: #fdd67a;
+}
+
+@media (min-width: 400px){
+    .guessBox {
+        max-width: 250px;
+        margin-left: -125px;
+    }
+
+    .guessForm input{
+        max-width: 150px;
+    }
+
+    .guessForm button{
+        width: 100px;
+    }
+}
