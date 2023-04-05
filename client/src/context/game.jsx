@@ -49,7 +49,8 @@ const gameReducer = (state, action) => {
         };
 
         case "NEW_GAME":
-            return initialState;
+            console.log(initialState)
+            return {...initialState, finalScore: []}
 
         default:
             return state

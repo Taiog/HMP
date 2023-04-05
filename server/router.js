@@ -58,4 +58,21 @@ router.post("/HMP/user", async (req, res) => {
   }
 });
 
+router.put("/HMP/updateScore", async (req, res) => {
+  try {
+    const getUser = await User.findOne({
+      User_email: req.body.User_email,
+    }).exec();
+    if (getUser && getUser.User_score < req.body.User_score) {
+      getUser.User_score = req.body.User_score;
+      await getUser.save();
+      return res.send(getUser);
+    }
+    return res.json("minor score");
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "Error" });
+  }
+});
+
 module.exports = router;

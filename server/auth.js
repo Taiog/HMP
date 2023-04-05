@@ -8,7 +8,7 @@ const generateAuthToken = (user) => {
       _id: user._id,
       User_email: user.User_email,
     },
-    "nero",
+    process.env.JWT_SECRET,
     {
       expiresIn: "72h",
     }
@@ -19,7 +19,7 @@ const generateAuthToken = (user) => {
 
 const verifyAuthToken = async (token) => {
   try {
-    const decoded = jwt.verify(token, "nero");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await User.findOne({
       _id: decoded._id,

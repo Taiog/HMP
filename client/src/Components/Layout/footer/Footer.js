@@ -1,10 +1,10 @@
 import styles from "./Footer.module.css";
 import { GoogleLogin } from "@react-oauth/google";
-import { useGoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
 import axios from "axios";
 import { useUser } from "../../../context/UserContext";
+import { MdLogout } from "react-icons/md";
 
 function Footer() {
   const user = useUser();
@@ -23,6 +23,10 @@ function Footer() {
     localStorage.setItem("@HMP-app/userToken", userToken);
     window.location.reload();
   };
+  const logout = () => {
+    localStorage.removeItem("@HMP-app/userToken");
+    window.location.reload();
+  };
   if (logged && user) {
     return (
       <div className={styles.footerLogged}>
@@ -33,6 +37,9 @@ function Footer() {
           <div>{`${user.User_name}`}</div>
           <div>#142</div>
         </div>
+        <button onClick={logout} title="Logout">
+          <MdLogout />
+        </button>
       </div>
     );
   }
