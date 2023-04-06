@@ -1,0 +1,55 @@
+.aboutBox {
+    border: solid 5px #fdd67a;
+    border-radius: 1em;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 65%;
+    padding: 0em 1em;
+    overflow-y: auto;
+    background-color: rgba(49, 49, 49, 0.2);
+}
+
+.aboutBox h1{
+    margin: 0.2em 0em;
+    font-weight: bold;
+    color: #fdd67a;
+}
+
+.aboutBox h3{
+    margin: 0.2em 0em;
+    text-align: justify;
+    color: white;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.icons img{
+    padding: 0em 1em;
+    height: 100%;
+}
+
+@media (max-width: 650px){
+    .icons {
+      display: grid;
+      justify-items: center;
+      width: 100%;
+      height: auto;
+      justify-content: center;
+      grid-template-columns: 40% 40%;
+      grid-template-rows: 5em 5em 5em;
+      row-gap: 1em;
+      column-gap: 1em;
+      padding: 1em 0em;
+    }
+  }

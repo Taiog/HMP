@@ -1,0 +1,114 @@
+.leaderBox {
+    border: solid 5px #fdd67a;
+    border-radius: 1em;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 65%;
+    background-color: rgba(49, 49, 49, 0.2);
+}
+
+.title {
+    width: 95%;
+    height: 10%;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: rgb(253, 214, 122);
+    border-bottom: solid 1px grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ranking {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.place {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 0.8em;
+    margin-top: 0.2em;
+    border-bottom: solid 1px gray;
+    font-weight: bold;
+}
+
+.place img{
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 0.5em;
+    margin-right: 0.5em;
+}
+
+
+.firstPlace {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 0.8em;
+    margin-top: 0.2em;
+    background-color: rgba(255, 239, 9, 0.5);
+    border-bottom: solid 1px gray;
+    font-weight: bold;
+}
+
+.firstPlace img{
+    height: 2.5em;
+    width: 2.5em;
+}
+
+.secondPlace {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 0.8em;
+    font-weight: bold;
+    background-color: rgba(202, 202, 202, 0.5);
+    border-bottom: solid 1px gray;
+}
+
+.secondPlace img{
+    height: 2.5em;
+    width: 2.5em;
+}
+.thirdPlace {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 0.8em;
+    font-weight: bold;
+    background-color: rgba(155, 70, 0, 0.5);
+    border-bottom: solid 1px gray;
+}
+
+.thirdPlace img{
+    height: 2.5em;
+    width: 2.5em;
+}
+
+.iconRef{
+    color: gray;
+    position: absolute;
+    width: 90%;
+    bottom: 110px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+
