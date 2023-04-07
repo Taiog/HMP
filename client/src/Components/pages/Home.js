@@ -8,7 +8,6 @@ function Home() {
   const [gameState, dispatch] = useContext(GameContext);
   const playGame = () => dispatch({ type: "CHANGE_STATE" });
 
-  console.log(gameState);
   return (
     <div className={styles.body}>
       <img src={logo_img} alt="Welcome" className={styles.gameLogo}></img>

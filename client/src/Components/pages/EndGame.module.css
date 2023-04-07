@@ -1,11 +1,64 @@
-.end{
+.endBox{
+    border: solid 5px #fdd67a;
+    border-radius: 1em;
+    width: 90%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
-    width: 90%;
-    max-width: 400px;
-    color: white
+    height: 450px;
+    overflow-y: auto;
+    background-color: rgba(49, 49, 49, 0.2);
+    color: white;
+}
+
+.endBox h1 {
+    color: #fdd67a;
+    margin: 0.5em 0em;
+    font-weight: bold;
+}
+.endBox p {
+    color: #fdd67a;
+    font-size: 1.5em;
+    margin: 0.5em 0em;
+}
+
+.endBox button{
+    background-color: #ffbf29;
+    width: 7em;
+    height: 2.5em;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 0.5em;
+    border: solid 2px black;
+    color: black;
+    position: relative;
+    z-index: 2;
+  }
+  
+.endBox button:hover{
+    background-color: #fdd67a;
+    cursor: pointer;
+}
+
+.resume{
+    border-top: solid 1px gray;
+    border-bottom: solid 1px gray;
+    width: 95%;
+    text-align: center;
+    padding-bottom: 0.4em;
+}
+.resume p{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.resume li{
+    font-size: 1.15em;
+    list-style: none;
+    padding: 0.3em 0em;
 }

@@ -3,13 +3,7 @@ import styles from "./ScoreModal.module.css";
 import { useContext } from "react";
 import { GameContext } from "../context/game";
 
-function ScoreModal({
-  isOpen,
-  setModalOpen,
-  children,
-  userGuess,
-  correctGuess,
-}) {
+function ScoreModal() {
   const [gameState, dispatch] = useContext(GameContext);
   const playAgain = () =>
     dispatch({ type: "NEXT_ROUND" }, (gameState.result = false));

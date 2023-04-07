@@ -9,7 +9,6 @@ import { useUser } from "../../context/UserContext";
 const EndGame = () => {
   const [gameState, dispatch] = useContext(GameContext);
   const user = useUser();
-  console.log(user);
   const playAgain = () => dispatch({ type: "NEW_GAME" });
   const finalScore = gameState.finalScore.reduce((acc, value) => acc + value);
   if (user) {
@@ -23,9 +22,9 @@ const EndGame = () => {
   }
   return (
     <div>
-      <div className={styles.end}>
-        <div>Game over</div>
-        <div>
+      <div className={styles.endBox}>
+        <h1>Game over</h1>
+        <div className={styles.resume}>
           <p>Resume match</p>
           <li>Round 1 - Score: {gameState.finalScore[0]} </li>
           <li>Round 2 - Score: {gameState.finalScore[1]} </li>
@@ -34,7 +33,7 @@ const EndGame = () => {
           <li>Round 5 - Score: {gameState.finalScore[4]} </li>
         </div>
         <p>Final Score: {finalScore}</p>
-        <button onClick={playAgain}>Play Again</button>
+        <button onClick={playAgain}>Home</button>
       </div>
     </div>
   );

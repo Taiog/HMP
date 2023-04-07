@@ -13,7 +13,7 @@ const initialState = {
 }
 
 const gameReducer = (state, action) => {
-    console.log(state, action)
+    console.log(state)
 
     switch(action.type) {
         case "CHANGE_STATE":
@@ -49,7 +49,6 @@ const gameReducer = (state, action) => {
         };
 
         case "NEW_GAME":
-            console.log(initialState)
             return {...initialState, finalScore: []}
 
         default:

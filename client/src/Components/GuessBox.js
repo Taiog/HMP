@@ -29,7 +29,6 @@ function GuessBox() {
     }
     gameState.roundScore = Math.trunc(Math.max(0, score));
     gameState.finalScore.push(gameState.roundScore);
-    console.log(score);
   };
   const [guess, setGuess] = useState(0);
   const userGuess = (data) => {

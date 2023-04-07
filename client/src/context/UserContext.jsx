@@ -25,7 +25,6 @@ export const UserProvider = ({ children }) => {
   };
 
   const accessToken = localStorage.getItem("@HMP-app/userToken");
-  console.log(accessToken)
 
   useEffect(() => {
     const handleStorageChange = (e) => {

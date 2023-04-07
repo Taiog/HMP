@@ -11,7 +11,6 @@ function Leaderboard() {
     axios
       .get("http://localhost:3001/leaderboard/ranking")
       .then((data) => {
-        console.log(data);
         setRank(data.data);
       })
       .catch((err) => console.log(err));
