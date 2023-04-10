@@ -10,8 +10,8 @@ function Footer() {
   const user = useUser();
   const verifyToken = localStorage.getItem("@HMP-app/userToken");
   const [rankPlace, setRankPlace] = useState([]);
-  const [logged, setLogged] = useState(verifyToken);
-  const [player, setPlayer] = useState({});
+  const logged = verifyToken;
+
   useEffect(() => {
     axios
       .get("http://localhost:3001/leaderboard/ranking")
@@ -20,6 +20,7 @@ function Footer() {
       })
       .catch((err) => console.log(err));
   }, []);
+
   const createUser = async (playerInfo) => {
     const response = await axios.post("http://localhost:3001/HMP/user", {
       User_ID_google: playerInfo.sub,
@@ -32,17 +33,20 @@ function Footer() {
     localStorage.setItem("@HMP-app/userToken", userToken);
     window.location.reload();
   };
+
   const logout = () => {
     localStorage.removeItem("@HMP-app/userToken");
     window.location.reload();
   };
+
   let userPlace = 0;
   if (logged && user) {
-    rankPlace.map((e, index) => {
+    rankPlace.forEach((e, index) => {
       if (e._id === user._id) {
         userPlace = index + 1;
       }
     });
+
     return (
       <div className={styles.footerLogged}>
         <div className={styles.image}>
@@ -67,7 +71,6 @@ function Footer() {
         text="signin_with"
         onSuccess={(credentialResponse) => {
           let decoded = jwt_decode(credentialResponse.credential);
-          setPlayer(decoded);
           createUser(decoded);
         }}
         onError={() => {

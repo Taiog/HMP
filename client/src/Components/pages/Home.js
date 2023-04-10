@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { GameContext } from "../../context/game";
 
 function Home() {
-  const [gameState, dispatch] = useContext(GameContext);
+  // eslint-disable-next-line no-unused-vars
+  const [_, dispatch] = useContext(GameContext);
   const playGame = () => dispatch({ type: "CHANGE_STATE" });
 
   return (
