@@ -14,7 +14,7 @@ function Footer() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/leaderboard/ranking")
+      .get(`${process.env.REACT_APP_URL_API}/leaderboard/ranking`)
       .then((data) => {
         setRankPlace(data.data);
       })
@@ -22,13 +22,16 @@ function Footer() {
   }, []);
 
   const createUser = async (playerInfo) => {
-    const response = await axios.post("http://localhost:3001/HMP/user", {
-      User_ID_google: playerInfo.sub,
-      User_name: `${playerInfo.given_name} ${playerInfo.family_name}`,
-      User_email: playerInfo.email,
-      User_score: 0,
-      User_picture: playerInfo.picture,
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_URL_API}/HMP/user`,
+      {
+        User_ID_google: playerInfo.sub,
+        User_name: `${playerInfo.given_name} ${playerInfo.family_name}`,
+        User_email: playerInfo.email,
+        User_score: 0,
+        User_picture: playerInfo.picture,
+      }
+    );
     const userToken = response.data.token;
     localStorage.setItem("@HMP-app/userToken", userToken);
     window.location.reload();

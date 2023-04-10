@@ -11,7 +11,7 @@ function MapGen() {
   const [gameState] = useContext(GameContext);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/cities", {
+    fetch(`${process.env.REACT_APP_URL_API}/api/cities`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
