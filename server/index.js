@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const port = 3001;
 const http = require("http");
 const router = require("./router");
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -15,5 +15,7 @@ app.use(function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on http://localhost:${port}`);
+  console.log(
+    `Example app listening on http://localhost:${process.env.PORT || 3001}`
+  );
 });
