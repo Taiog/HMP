@@ -37,14 +37,11 @@ router.get("/me", authMiddleware, async (req, res) => {
 });
 
 router.post("/HMP/user", async (req, res) => {
-  console.log("nero");
   try {
     const verifyUser = await User.findOne({
       User_email: req.body.User_email,
     }).exec();
-    console.log(verifyUser);
     if (verifyUser) {
-      console.log("exist");
       const token = generateAuthToken(verifyUser);
       return res.json({ token });
     } else {

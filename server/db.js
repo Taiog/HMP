@@ -8,5 +8,4 @@ async function main() {
 }
 
 main().catch((err) => console.log(err));
-console.log("teste");
 module.exports = mongoose;

@@ -13,7 +13,6 @@ const initialState = {
 }
 
 const gameReducer = (state, action) => {
-    console.log(state)
 
     switch(action.type) {
         case "CHANGE_STATE":
