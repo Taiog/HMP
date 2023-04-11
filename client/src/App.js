@@ -7,6 +7,7 @@ import Footer from "./Components/Layout/footer/Footer";
 import { Outlet } from "react-router-dom";
 
 function App() {
+  console.log(process.env.REACT_APP_ID_OAUTH);
   return (
     <div className={styles.field}>
       <GoogleOAuthProvider clientId={process.env.REACT_APP_ID_OAUTH}>
