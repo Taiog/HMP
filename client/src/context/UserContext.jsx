@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
     if (!accessToken) return;
 
     try {
-      const response = await axios.get("http://localhost:3001/me", {
+      const response = await axios.get(`${process.env.REACT_APP_URL_API}/me`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
       setUser(response.data);
