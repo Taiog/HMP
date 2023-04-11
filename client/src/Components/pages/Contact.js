@@ -18,7 +18,7 @@ function Contact() {
           <img src={gitHub} alt="."></img>
         </a>
         <a
-          href="https://www.linkedin.com/in/tiago-guerra-851b141b6/"
+          href="https://www.linkedin.com/in/tiago-guerra-dev/"
           target="_blank"
           rel="noreferrer"
         >

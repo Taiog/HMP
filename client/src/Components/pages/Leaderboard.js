@@ -9,7 +9,7 @@ function Leaderboard() {
   const [rank, setRank] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/leaderboard/ranking")
+      .get(`${process.env.REACT_APP_URL_API}/leaderboard/ranking`)
       .then((data) => {
         setRank(data.data);
       })

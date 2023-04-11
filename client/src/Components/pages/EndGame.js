@@ -13,7 +13,7 @@ const EndGame = () => {
   const finalScore = gameState.finalScore.reduce((acc, value) => acc + value);
   if (user) {
     const sendScore = async () => {
-      await axios.put("http://localhost:3001/HMP/updateScore", {
+      await axios.put(`${process.env.REACT_APP_URL_API}/HMP/updateScore`, {
         User_email: user.User_email,
         User_score: finalScore,
       });
