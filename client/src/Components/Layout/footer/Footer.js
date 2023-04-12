@@ -23,12 +23,11 @@ function Footer() {
 
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await axios.post(
-        `${process.env.REACT_APP_URL_POST}/auth/google`,
-        {
+      const tokens = await axios
+        .post(`${process.env.REACT_APP_URL_POST}/auth/google`, {
           code,
-        }
-      );
+        })
+        .catch((err) => console.log(err));
       const decoded = jwt_decode(tokens.data.id_token);
       createUser(decoded);
 
