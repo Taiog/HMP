@@ -20,10 +20,14 @@ const oAuth2Client = new OAuth2Client(
 );
 
 router.post("/auth/google", async (req, res) => {
-  const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
-  console.log(tokens);
+  try {
+    const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
+    console.log(tokens);
 
-  res.json(tokens);
+    res.json(tokens);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 router.get("/", (req, res) => {
