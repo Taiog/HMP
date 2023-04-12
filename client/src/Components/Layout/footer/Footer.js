@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css";
-import { useGoogleLogin, GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useState, useEffect } from "react";
 import axios from "axios";
