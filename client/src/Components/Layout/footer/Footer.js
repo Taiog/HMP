@@ -85,7 +85,9 @@ function Footer() {
 
   return (
     <div className={styles.footer}>
-      <button onClick={googleLogin}>login</button>
+      <button onClick={googleLogin} className={styles.login}>
+        Sign In
+      </button>
       {/* <GoogleLogin
         shape="pill"
         size="medium"

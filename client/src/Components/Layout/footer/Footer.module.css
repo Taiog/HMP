@@ -14,7 +14,7 @@
     justify-content: left;
     margin-left: 1em;
     align-items: center;
-    color: white;
+    color:white;
 }
 
 .image img {
@@ -39,5 +39,21 @@
 .footerLogged button:hover{
     color: #fdd67a;
     cursor: pointer;
-    
+}
+
+.footer button{
+    height: 2.5em;
+    width: 6em;
+    background-color: rgba(255, 255, 255, 0.11) ;
+    border: solid 2px white;
+    border-radius: 0.5em;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+}
+
+.footer button:hover{
+    border-color: #fdd67a ;
+    cursor: pointer;
+    color: #fdd67a;
 }
