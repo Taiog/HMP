@@ -5,12 +5,26 @@ const User = require("./usersSchema");
 const mongoose = require("./db");
 const { generateAuthToken } = require("./auth");
 const authMiddleware = require("./middleware/authMiddleware");
+const { OAuth2Client } = require("google-auth-library");
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
 }
+
+const oAuth2Client = new OAuth2Client(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  "postmessage"
+);
+
+router.post("/auth/google", async (req, res) => {
+  const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
+  console.log(tokens);
+
+  res.json(tokens);
+});
 
 router.get("/", (req, res) => {
   res.send("oi");

@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin, GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -20,6 +20,22 @@ function Footer() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: async ({ code }) => {
+      const tokens = await axios.post(
+        `${process.env.REACT_APP_URL_API}/auth/google`,
+        {
+          code,
+        }
+      );
+      const decoded = jwt_decode(tokens.data.id_token);
+      createUser(decoded);
+
+      console.log(tokens);
+    },
+    flow: "auth-code",
+  });
 
   const createUser = async (playerInfo) => {
     const response = await axios.post(
@@ -68,11 +84,13 @@ function Footer() {
 
   return (
     <div className={styles.footer}>
-      <GoogleLogin
+      <button onClick={googleLogin}>login</button>
+      {/* <GoogleLogin
         shape="pill"
         size="medium"
         text="signin_with"
         onSuccess={(credentialResponse) => {
+          console.log(credentialResponse);
           let decoded = jwt_decode(credentialResponse.credential);
           createUser(decoded);
         }}
@@ -80,7 +98,7 @@ function Footer() {
           console.log("Login Failed");
         }}
         auto_select
-      />
+      /> */}
     </div>
   );
 }
