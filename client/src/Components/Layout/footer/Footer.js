@@ -24,7 +24,7 @@ function Footer() {
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       const tokens = await axios.post(
-        `${process.env.REACT_APP_URL_API}/auth/google`,
+        `${process.env.REACT_APP_URL_POST}/auth/google`,
         {
           code,
         }
