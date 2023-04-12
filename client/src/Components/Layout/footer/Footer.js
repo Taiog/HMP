@@ -26,7 +26,7 @@ function Footer() {
       const tokens = await axios.post(
         `${process.env.REACT_APP_URL_API}/auth/google`,
         {
-          code: code.code,
+          code,
         }
       );
       let decoded = jwt_decode(tokens.data.id_token);
