@@ -1,7 +1,6 @@
 import styles from "./Contact.module.css";
 import fotoPerfil from "../Images/foto_perfil_2.jpg";
-import gitHub from "../Images/GitHub.jpg";
-import linkedIn from "../Images/LinkedIn.png";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Contact() {
   return (
@@ -14,15 +13,21 @@ function Contact() {
       <div className={styles.text}>Contato:</div>
       <p>tiagoargollo@hotmail.com</p>
       <div className={styles.images}>
-        <a href="https://github.com/Taiog" target="_blank" rel="noreferrer">
-          <img src={gitHub} alt="."></img>
+        <a
+          href="https://github.com/Taiog"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.github}
+        >
+          <FaGithub />
         </a>
         <a
           href="https://www.linkedin.com/in/tiago-guerra-dev/"
           target="_blank"
           rel="noreferrer"
+          className={styles.linkedin}
         >
-          <img src={linkedIn} alt="."></img>
+          <FaLinkedin />
         </a>
       </div>
     </div>
