@@ -1,12 +1,28 @@
 import styles from "./ScoreModal.module.css";
 
-import { useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { GameContext } from "../context/game";
 
 function ScoreModal() {
   const [gameState, dispatch] = useContext(GameContext);
-  const playAgain = () =>
-    dispatch({ type: "NEXT_ROUND" }, (gameState.result = false));
+  const playAgain = useCallback(
+    () => dispatch({ type: "NEXT_ROUND" }, (gameState.result = false)),
+    [gameState, dispatch]
+  );
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter" && gameState.result) {
+        playAgain();
+        // Do something when the Enter key is pressed
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [gameState, playAgain]);
   if (gameState.result) {
     return (
       <div className={styles.background}>

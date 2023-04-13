@@ -19,6 +19,7 @@ function MapGen() {
     })
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data);
         setData(data);
       })
       .catch((err) => console.log(err));
