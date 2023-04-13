@@ -5,7 +5,9 @@ import { GameContext } from "../context/game";
 
 function GuessBox() {
   const [gameState, dispatch] = useContext(GameContext);
-  const resultRound = () => {
+
+  const resultRound = (e) => {
+    e.preventDefault();
     dispatch({ type: "ROUND_STATE" });
     gameState.roundGuess = guess;
     let score = 0;
@@ -29,26 +31,40 @@ function GuessBox() {
     }
     gameState.roundScore = Math.trunc(Math.max(0, score));
     gameState.finalScore.push(gameState.roundScore);
+    setGuess("");
   };
-  const [guess, setGuess] = useState(0);
+
+  const [guess, setGuess] = useState("0");
   const userGuess = (data) => {
-    setGuess(data);
+    let dataNumber = Number.parseInt(data);
+    setGuess(dataNumber);
   };
+
+  const handleChange = (e) => {
+    if (e.target.value === "") {
+      setGuess("");
+      return;
+    }
+    if (isNaN(parseInt(e.target.value))) {
+      return;
+    }
+    userGuess(e.target.value);
+  };
+
   return (
     <div className={styles.guessBox}>
-      <div className={styles.guessForm}>
+      <form className={styles.guessForm} onSubmit={resultRound}>
         <input
-          type="number"
+          type="text"
           placeholder="Your Guess"
-          min={0}
           required
           value={guess}
-          onChange={(e) => userGuess(e.target.value)}
+          onChange={handleChange}
         ></input>
-        <button onClick={resultRound}>
+        <button type="submit">
           <FaArrowRight />
         </button>
-      </div>
+      </form>
     </div>
   );
 }
