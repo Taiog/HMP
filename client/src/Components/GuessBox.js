@@ -30,7 +30,7 @@ function GuessBox() {
     gameState.roundScore = Math.trunc(Math.max(0, score));
     gameState.finalScore.push(gameState.roundScore);
   };
-  const [guess, setGuess] = useState(0);
+  const [guess, setGuess] = useState("");
   const userGuess = (data) => {
     setGuess(data);
   };
@@ -38,11 +38,10 @@ function GuessBox() {
     <div className={styles.guessBox}>
       <div className={styles.guessForm}>
         <input
-          type="number"
+          type="text"
           placeholder="Your Guess"
-          min={0}
           required
-          value={guess}
+          value={Number.parseInt(guess)}
           onChange={(e) => userGuess(e.target.value)}
         ></input>
         <button onClick={resultRound}>
