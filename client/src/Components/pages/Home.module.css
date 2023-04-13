@@ -29,6 +29,27 @@
     max-width: 350px;
     z-index: 1;
 }
+
+.boxInfo{
+  margin-top: 2em;
+  padding: 0.5em;
+  width: 80%;
+  max-width: 500px;
+  text-align: justify;
+  border: solid 5px #fdd67a;
+  border-radius: 1em;
+  background-color: rgba(49, 49, 49, 0.2);
+  color: white;
+}
+
+.boxInfo h2{
+  text-align: center;
+  margin: 0.3em 0em;
+}
+
+.boxInfo p{
+  margin: 0.3em 0em;
+}
   
 @keyframes pulse {
     0% {
