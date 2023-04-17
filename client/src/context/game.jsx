@@ -7,6 +7,8 @@ const initialState = {
     result: false,
     roundScore: 0,
     gameMap: 1,
+    city: false,
+    data: [],
     roundPop: 0,
     roundGuess: 0,
     finalScore: []
@@ -43,6 +45,7 @@ const gameReducer = (state, action) => {
         return {
             ...state,
             gameMap: nextRound,
+            city: false,
             gameStage: endGame ? stages[2] : stages[1],
             result: false
         };

@@ -1,43 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import styles from "./MapGen.module.css";
 import InfoBox from "./InfoBox";
 import GuessBox from "./GuessBox";
 import ScoreModal from "./ScoreModal";
+import Loading from "./Loading";
 import { useContext } from "react";
 import { GameContext } from "../context/game";
+import axios from "axios";
 
 function MapGen() {
-  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [gameState] = useContext(GameContext);
+  console.log(gameState.city);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/api/cities`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      })
-      .catch((err) => console.log(err));
-  }, [gameState.gameMap]);
-  gameState.roundPop = data.population;
+    if (gameState.city) {
+      console.log(gameState.data);
+      setLoading(true);
+    } else {
+      axios
+        .get(`${process.env.REACT_APP_URL_API}/api/cities`)
+        .then((data) => {
+          // console.log(data.data);
+          if (!gameState.city) {
+            gameState.data = data.data;
+            console.log(gameState.data);
+            setTimeout(() => {
+              setLoading(true);
+            }, 2000);
+            gameState.city = true;
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [gameState.gameMap, gameState.city]);
+
   return (
     <div className={styles.map}>
+      {!loading && <Loading />}
       <iframe
-        title={data.id}
+        title={gameState.data.id}
         frameBorder="0"
         referrerPolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_KEY}&q=${data.city},+${data.country}&maptype=satellite`}
+        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_KEY}&q=${gameState.data.city},+${gameState.data.country}&maptype=satellite`}
         allowFullScreen
       ></iframe>
       <InfoBox
-        city={`${data.city}`}
-        country={`${data.country}`}
-        countryCode={`${data.iso2}`}
+        city={`${gameState.data.city}`}
+        country={`${gameState.data.country}`}
+        countryCode={`${gameState.data.iso2}`}
       />
       <GuessBox />
       <ScoreModal />

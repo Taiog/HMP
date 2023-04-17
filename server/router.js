@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const cityDanlimas = require("./DANLIMAS.json");
 const User = require("./usersSchema");
-const mongoose = require("./db");
+const redis = require("redis");
 const { generateAuthToken } = require("./auth");
 const authMiddleware = require("./middleware/authMiddleware");
 const { OAuth2Client } = require("google-auth-library");
+const clientRedis = redis.createClient();
+clientRedis.connect();
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -21,7 +23,6 @@ const oAuth2Client = new OAuth2Client(
 
 router.post("/auth/google", async (req, res) => {
   const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
-  console.log(tokens);
 
   res.json(tokens);
 });
@@ -30,11 +31,22 @@ router.get("/", (req, res) => {
   res.send("oi");
 });
 
-router.get("/api/cities", (req, res) => {
+router.get("/api/cities", async (req, res) => {
   const randomNumber = getRandomInt(0, cityDanlimas.length);
   const cityMapping = cityDanlimas[randomNumber];
+  const population = await clientRedis.set(
+    "population",
+    cityMapping.population
+  );
+  let cityMappingNoPop = { ...cityMapping };
+  cityMappingNoPop.population = "";
 
-  res.json(cityMapping);
+  res.json(cityMappingNoPop);
+});
+
+router.get("/api/population", async (req, res) => {
+  const population = await clientRedis.get("population");
+  res.json(population);
 });
 
 router.get("/leaderboard/ranking", async (req, res) => {

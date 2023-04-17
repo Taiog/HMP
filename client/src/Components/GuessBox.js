@@ -2,33 +2,28 @@ import { FaArrowRight } from "react-icons/fa";
 import styles from "./GuessBox.module.css";
 import { useContext, useState } from "react";
 import { GameContext } from "../context/game";
+import axios from "axios";
 
 function GuessBox() {
   const [gameState, dispatch] = useContext(GameContext);
 
-  const resultRound = (e) => {
+  const resultRound = async (e) => {
     e.preventDefault();
+    await axios
+      .get(`${process.env.REACT_APP_URL_API}/api/population`)
+      .then((data) => {
+        console.log(data.data);
+        gameState.roundPop = data.data;
+      })
+      .catch((err) => console.log(err));
     dispatch({ type: "ROUND_STATE" });
     gameState.roundGuess = guess;
     let score = 0;
-    if (gameState.roundGuess <= gameState.roundPop) {
-      score =
-        (1 -
-          Math.abs(gameState.roundGuess - gameState.roundPop) /
-            gameState.roundPop) *
-        10000;
-    } else if (
-      gameState.roundGuess / 10 < gameState.roundPop &&
-      gameState.roundGuess > gameState.roundPop
-    ) {
-      score =
-        (1 -
-          Math.abs(gameState.roundGuess - gameState.roundPop) /
-            (gameState.roundPop * 9)) *
-        1000;
-    } else {
-      score = 0;
-    }
+    score =
+      (1 -
+        Math.abs(gameState.roundGuess - gameState.roundPop) /
+          gameState.roundPop) *
+      10000;
     gameState.roundScore = Math.trunc(Math.max(0, score));
     gameState.finalScore.push(gameState.roundScore);
     setGuess("");
