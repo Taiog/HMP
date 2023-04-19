@@ -6,7 +6,9 @@ const redis = require("redis");
 const { generateAuthToken } = require("./auth");
 const authMiddleware = require("./middleware/authMiddleware");
 const { OAuth2Client } = require("google-auth-library");
-const clientRedis = redis.createClient();
+const clientRedis = redis.createClient({
+  url: process.env.REDIS_URL,
+});
 clientRedis.connect();
 
 function getRandomInt(min, max) {

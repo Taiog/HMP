@@ -1,4 +1,4 @@
-import { useEffect, useState, memo } from "react";
+import { useEffect } from "react";
 import styles from "./MapGen.module.css";
 import InfoBox from "./InfoBox";
 import GuessBox from "./GuessBox";
@@ -9,35 +9,25 @@ import { GameContext } from "../context/game";
 import axios from "axios";
 
 function MapGen() {
-  const [loading, setLoading] = useState(false);
-  const [gameState] = useContext(GameContext);
-  console.log(gameState.city);
+  const [gameState, dispatch] = useContext(GameContext);
 
   useEffect(() => {
-    if (gameState.city) {
-      console.log(gameState.data);
-      setLoading(true);
-    } else {
+    if (!gameState.city) {
       axios
         .get(`${process.env.REACT_APP_URL_API}/api/cities`)
         .then((data) => {
-          // console.log(data.data);
-          if (!gameState.city) {
-            gameState.data = data.data;
-            console.log(gameState.data);
-            setTimeout(() => {
-              setLoading(true);
-            }, 2000);
-            gameState.city = true;
-          }
+          dispatch({ type: "CHANGE_CITY", payload: data.data });
+          gameState.city = true;
         })
         .catch((err) => console.log(err));
     }
-  }, [gameState.gameMap, gameState.city]);
+  });
 
+  if (!gameState.city) {
+    return <Loading />;
+  }
   return (
     <div className={styles.map}>
-      {!loading && <Loading />}
       <iframe
         title={gameState.data.id}
         frameBorder="0"

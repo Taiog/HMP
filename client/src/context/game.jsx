@@ -53,6 +53,9 @@ const gameReducer = (state, action) => {
         case "NEW_GAME":
             return {...initialState, finalScore: []}
 
+        case "CHANGE_CITY":
+            return {...state, data: action.payload}
+
         default:
             return state
     }
