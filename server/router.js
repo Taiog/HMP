@@ -36,15 +36,16 @@ router.get("/", (req, res) => {
 router.get("/api/cities", async (req, res) => {
   const randomNumber = getRandomInt(0, cityDanlimas.length);
   const cityMapping = cityDanlimas[randomNumber];
+
   const population = await clientRedis.set(
     cityMapping.id,
     cityMapping.population,
-    "EX",
+    EX,
     60 * 60 * 24
   );
+
   let cityMappingNoPop = { ...cityMapping };
   cityMappingNoPop.population = "";
-
   res.json(cityMappingNoPop);
 });
 
