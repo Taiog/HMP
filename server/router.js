@@ -40,8 +40,8 @@ router.get("/api/cities", async (req, res) => {
   const population = await clientRedis.set(
     cityMapping.id,
     cityMapping.population,
-    EX,
-    60 * 60 * 24
+    "EX",
+    60
   );
 
   let cityMappingNoPop = { ...cityMapping };
