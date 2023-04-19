@@ -10,7 +10,9 @@ function GuessBox() {
   const resultRound = async (e) => {
     e.preventDefault();
     await axios
-      .get(`${process.env.REACT_APP_URL_API}/api/population`)
+      .get(
+        `${process.env.REACT_APP_URL_API}/api/population/${gameState.data.id}`
+      )
       .then((data) => {
         console.log(data.data);
         gameState.roundPop = data.data;

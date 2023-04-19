@@ -46,8 +46,8 @@ router.get("/api/cities", async (req, res) => {
   res.json(cityMappingNoPop);
 });
 
-router.get("/api/population", async (req, res) => {
-  const population = await clientRedis.get("population");
+router.get("/api/population/:id", async (req, res) => {
+  const population = await clientRedis.get(req.params.id);
   res.json(population);
 });
 
