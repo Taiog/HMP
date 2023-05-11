@@ -14,7 +14,7 @@ function About() {
         Antes de apresentar o How Many People, preciso me apresentar, me chamo
         Tiago Guerra, estou estudando desenvolvimento Fullstack e este é meu
         primeiro projeto. Tenho 25 anos, brasileiro, residente em Aracaju-SE,
-        sou formado em engenharia civil, porém, a cerca de 3 meses decidi migrar
+        sou formado em engenharia civil, porém, a cerca de 6 meses decidi migrar
         profissionalmente para área de desenvolvimento.
         <br />
         No momento estou em busca da primeira oportunidade de trabalho, e esse
