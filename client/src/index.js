@@ -10,6 +10,7 @@ import Contact from "./Components/pages/Contact";
 import Principal from "./Components/pages/Principal";
 import { GameProvider } from "./context/game";
 import { UserProvider } from "./context/UserContext";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -47,3 +48,5 @@ root.render(
     </UserProvider>
   </React.StrictMode>
 );
+
+serviceWorkerRegistration.register();
