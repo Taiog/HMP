@@ -3,8 +3,25 @@
   src: url("./Components/Layout/fonts/Poppins/Poppins-Light.ttf");
 }
 
+/* PWA full screen: preencher toda a tela no celular (evita tarja inferior) */
+html {
+  min-height: 100%;
+  min-height: 100dvh;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .App {
@@ -27,11 +44,16 @@ body {
 .field {
   font-family: "poppins", "sans-serif";
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(to bottom, #010033, #00d9ff);
   background-size: 400% 400%;
+  /* Safe area: estende o fundo até as bordas e evita conteúdo atrás do notch/home */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  box-sizing: border-box;
 }
 
 .googleNav {
