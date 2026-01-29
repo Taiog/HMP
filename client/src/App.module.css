@@ -3,13 +3,12 @@
   src: url("./Components/Layout/fonts/Poppins/Poppins-Light.ttf");
 }
 
-body{
+body {
   margin: 0;
 }
 
 .App {
   text-align: center;
-  
 }
 
 .header {
@@ -20,7 +19,7 @@ body{
   padding-left: 0.3em;
 }
 
-.header Footer{
+.header Footer {
   visibility: collapse;
   display: none;
 }
@@ -28,37 +27,37 @@ body{
 .field {
   font-family: "poppins", "sans-serif";
   display: flex;
-  height: 100%;
+  height: 100vh;
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(to bottom, #010033, #00d9ff);
   background-size: 400% 400%;
 }
 
-.googleNav{
+.googleNav {
   visibility: collapse;
-  display: none
+  display: none;
 }
 
-@media (min-width: 350px){
+@media (min-width: 350px) {
   .header {
-    padding: 0em 1em 0em
+    padding: 0em 1em 0em;
   }
 }
 
-@media (min-width: 1200px){
-  .header{
-    position: relative
+@media (min-width: 1200px) {
+  .header {
+    position: relative;
   }
 
-  .googleNav{
+  .googleNav {
     visibility: visible;
     position: absolute;
     display: block;
     right: 1em;
   }
 
-  .field footer{
+  .field footer {
     visibility: collapse;
     display: none;
   }

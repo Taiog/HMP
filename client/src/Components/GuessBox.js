@@ -24,7 +24,7 @@ function GuessBox() {
     score =
       (1 -
         Math.abs(gameState.roundGuess - gameState.roundPop) /
-          gameState.roundPop) *
+        gameState.roundPop) *
       10000;
     gameState.roundScore = Math.trunc(Math.max(0, score));
     gameState.finalScore.push(gameState.roundScore);
@@ -53,6 +53,7 @@ function GuessBox() {
       <form className={styles.guessForm} onSubmit={resultRound}>
         <input
           type="text"
+          inputMode="numeric"
           placeholder="Your Guess"
           required
           value={guess}
