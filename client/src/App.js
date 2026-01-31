@@ -18,9 +18,7 @@ function App() {
           <Title />
           <NavBar />
         </header>
-        <main className={styles.mainContent}>
-          <Outlet />
-        </main>
+        <Outlet />
         <footer className={styles.footerVis}>
           <Footer />
         </footer>

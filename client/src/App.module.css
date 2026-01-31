@@ -27,18 +27,11 @@ body {
 .field {
   font-family: "poppins", "sans-serif";
   display: flex;
-  height: 100%;
+  height: 100vh;
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(to bottom, #010033, #00d9ff);
   background-size: 400% 400%;
-}
-
-.mainContent {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .googleNav {
